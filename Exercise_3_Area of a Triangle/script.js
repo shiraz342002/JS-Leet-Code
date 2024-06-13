@@ -4,4 +4,4 @@ function area(a,b,c){
     return area
 }
 
-console.log(area(5,6,7))
+console.log("The Area of Triangle is "+area(5,6,7)))
