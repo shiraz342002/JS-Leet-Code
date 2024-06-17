@@ -15,5 +15,5 @@ console.log("Today is : "+day)
 var hour = date.getHours();
 var minute = date.getMinutes();
 var second = date.getSeconds(); 
-var m=(hour>=12)?" PM " :" AM "; 
-console.log("Current Time is :",hour,m,":",minute,":",second)
+var m=(hour>=12)?" PM " :" AM ";
+console.log("Current Time :",hour,m,":",minute,":",second)
