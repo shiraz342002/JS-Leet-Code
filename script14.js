@@ -164,18 +164,22 @@ const items = [
     }
 ];
 
-function CalculateTotal(items,quantity,item){
-    var total_price=0;
-    var counter=0;
-    for (const elem of items) {
-     if(elem.name==item){
-        for(let i=0;i<quantity;i++){
-            counter++;
-            total_price=elem.price*counter;
+function calculateTotal(cart, items) {
+    return cart.reduce((total, cartItem) => {
+        const item = items.find(product => product.id === cartItem.id);
+        if (item) {
+            total += item.price * cartItem.quantity;
         }
-     }   
-    }
-    console.log("The total price of your items is :"+total_price+"$");
-    
+        return total;
+    }, 0);
 }
-CalculateTotal(items,5,"Butter Chicken");
+const cart = [
+    { id: 1, quantity: 2 },
+    { id: 5, quantity: 3 },
+    { id: 12, quantity: 1 },
+    { id: 20, quantity: 4 }
+];
+
+const total = CalculateTotal(cart, items);
+console.log("The total price of your items is: $" + total.toFixed(2));
+
