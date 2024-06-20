@@ -164,7 +164,7 @@ const items = [
     }
 ];
 
-function calculateTotal(cart, items) {
+function CalculateTotal(cart, items) {
     return cart.reduce((total, cartItem) => {
         const item = items.find(product => product.id === cartItem.id);
         if (item) {
