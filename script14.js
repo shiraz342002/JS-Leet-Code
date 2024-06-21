@@ -165,13 +165,20 @@ const items = [
 ];
 
 function CalculateTotal(cart, items) {
-    return cart.reduce((total, cartItem) => {
-        const item = items.find(product => product.id === cartItem.id);
-        if (item) {
-            total += item.price * cartItem.quantity;
+    let total = 0;
+
+    for (let i = 0; i < cart.length; i++) {
+        let cartItem = cart[i];
+        for (let j = 0; j < items.length; j++) {
+            let item = items[j];
+            if (item.id === cartItem.id) {
+                total += item.price * cartItem.quantity;
+                break; // Stop the inner loop once the item is found
+            }
         }
-        return total;
-    }, 0);
+    }
+
+    return total;
 }
 const cart = [
     { id: 1, quantity: 2 },
@@ -180,6 +187,4 @@ const cart = [
     { id: 20, quantity: 4 }
 ];
 
-const total = CalculateTotal(cart, items);
-console.log("The total price of your items is: $" + total.toFixed(2));
-
+console.log(CalculateTotal(cart, items)); // Output: 37
